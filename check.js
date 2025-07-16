@@ -38,3 +38,5 @@ console.log('New:', twelfthWord);
 
 const fullMnemonic = [...elevenWords, twelfthWord].join(' ');
 // console.log('Full 12-word mnemonic:', fullMnemonic);
+
+module.exports = { completeMnemonicWithChecksum };

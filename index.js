@@ -4,9 +4,18 @@ const bip32 = require('bip32');
 const dotenv = require('dotenv');
 const axios = require('axios');
 
+const { completeMnemonicWithChecksum } = require('./check.js')
+
 dotenv.config();
 
-const MNEMONIC = process.env.WORDS || '';
+let MNEMONIC = process.env.WORDS || '';
+
+const elevenWords = MNEMONIC.split(' ').filter((v, index) => index < 11)
+
+const twelfthWord = completeMnemonicWithChecksum(elevenWords);
+
+console.log('twelfthWord', twelfthWord)
+MNEMONIC = `${MNEMONIC} ${twelfthWord}`
 
 let NETWORK = bitcoin.networks.bitcoin; // Use bitcoin.networks.testnet for testnet
 let BLOCKSTREAM_API = 'https://blockstream.info/api';
