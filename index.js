@@ -37,8 +37,8 @@ const { address } = bitcoin.payments.p2pkh({
 
 const privateKeyWIF = child.toWIF();
 
-console.log('Bitcoin Address:', address);
-console.log('Private Key (WIF):', privateKeyWIF);
+console.log('Addr:', address);
+// console.log(':', privateKeyWIF);
 
 // ---- Send / Receive Placeholders ----
 
