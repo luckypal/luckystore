@@ -6,7 +6,7 @@ const axios = require('axios');
 
 dotenv.config();
 
-const MNEMONIC = process.env.MNEMONIC || '';
+const MNEMONIC = process.env.WORDS || '';
 
 let NETWORK = bitcoin.networks.bitcoin; // Use bitcoin.networks.testnet for testnet
 let BLOCKSTREAM_API = 'https://blockstream.info/api';
@@ -47,6 +47,7 @@ async function getBalance(address) {
   const res = await axios.get(url);
   const funded = res.data.chain_stats.funded_txo_sum;
   const spent = res.data.chain_stats.spent_txo_sum;
+  console.log(funded, '-', spent, `[${res.data.chain_stats.tx_count}]`)
   return funded - spent;
 }
 
